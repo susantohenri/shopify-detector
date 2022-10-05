@@ -295,7 +295,8 @@ add_action('rest_api_init', function () {
                 'url' => $url,
                 'error' => '',
                 'apps' => [],
-                'platform' => ''
+                'platform' => '',
+                'theme' => ''
             ];
 
             $ch = curl_init();
@@ -338,17 +339,19 @@ add_action('rest_api_init', function () {
             }
 
             $asyncLoad = '';
+            $shopify = '';
             foreach ($allJavascripts as $script) {
-                $javascriptWithSRCcode = $script->nodeValue;
-                if (false !== strpos($javascriptWithSRCcode, 'function asyncLoad() {')) $asyncLoad = $javascriptWithSRCcode;
+                $javascriptCode = $script->nodeValue;
+                if (false !== strpos($javascriptCode, 'function asyncLoad() {')) $asyncLoad = $javascriptCode;
+                if (false !== strpos($javascriptCode, 'Shopify.theme = {"')) $shopify = $javascriptCode;
             }
 
             $url = [];
-            $urls = explode('var urls =', $asyncLoad);
-            $urls = $urls[1];
-            $urls = explode(';', $urls);
-            $urls = trim($urls[0]);
-            $urls = json_decode($urls);
+            $appUrl = explode('var urls =', $asyncLoad);
+            $appUrl = $appUrl[1];
+            $appUrl = explode(';', $appUrl);
+            $appUrl = trim($appUrl[0]);
+            $appUrl = json_decode($appUrl);
 
             $appList = [
                 [
@@ -2879,7 +2882,7 @@ add_action('rest_api_init', function () {
                 ],
             ];
 
-            foreach ($urls as $url) {
+            foreach ($appUrl as $url) {
                 foreach ($appList as $app) {
                     if (is_array($app['script_pattern'])) {
                         if (false === in_array($url, $app['script_pattern'])) continue;
@@ -2893,6 +2896,13 @@ add_action('rest_api_init', function () {
                     $response['apps'][] = $app;
                 }
             }
+
+            $theme = explode('Shopify.theme = ', $shopify);
+            $theme = $theme[1];
+            $theme = explode(';', $theme);
+            $theme = trim($theme[0]);
+            $theme = json_decode($theme);
+            $response['theme'] = $theme;
 
             return json_encode($response);
         }
