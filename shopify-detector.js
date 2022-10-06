@@ -47,32 +47,17 @@ function shopifyDetect() {
                             `
                     }
                 }
-                document.querySelector('.apps-detected').innerHTML = ''
+
+                for (var appactv of document.querySelectorAll('.apps-detected-active')) appactv.remove()
                 for (var app of res.apps) {
-                    var appHTML = document.createElement(`
-                            <div>
-                                <div class="columns-row">
-                                    <div class="column size-1 size-md-12">
-                                        <div class="img-holder">
-                                            &nbsp;
-                                        </div>
-                                    </div>
-                                    <div class="column size-11 size-md-12 detected-title">
-                                        <a rel="noreferrer nofollow" target="_blank" class="link colored detected-title-h2 heading-caption s-4"
-                                            href="${app.app_store_url}">${app.name}</a>
-                                        <div class="adv-block">Recommended</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                ${app.long_description}
-                            </div>
-                            <br>
-                            <div>
-                                <a class="bt s-2 transparent mt-3" rel="noreferrer nofollow" target="_blank"
-                                    href="${app.app_store_url}">More Info</a>
-                            </div>
-                        `)
+                    var appHTML = document.querySelector('.apps-detected-template').cloneNode(true)
+                    appHTML.querySelector(".detected-title-h2").href = app.app_store_url
+                    appHTML.querySelector(".detected-title-h2").textContent = app.name
+                    appHTML.querySelector(".app-long-description").textContent = app.short_description
+                    appHTML.querySelector(".app-more-info").href = app.app_store_url
+                    appHTML.removeAttribute('hidden')
+                    appHTML.classList.remove('apps-detected-template')
+                    appHTML.classList.add('apps-detected-active')
                     document.querySelector('.apps-detected').appendChild(appHTML)
                 }
                 document.querySelector('.detecting-result-wrapper').removeAttribute('hidden')

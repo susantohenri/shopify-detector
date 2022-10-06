@@ -30,11 +30,11 @@ add_shortcode('shopify-detector', function () {
         'shopify-detector',
         'shopify_detector',
         array(
-            'detection_url' => site_url('wp-json/shopify-detector/v1/detect'),
-            'shopify_logo' => plugin_dir_url( __FILE__ ) . 'img.png'
+            'detection_url' => site_url('wp-json/shopify-detector/v1/detect')
         )
     );
 
+    $shopify_logo = plugin_dir_url(__FILE__) . 'img.png';
     return "
         <div id='shopifydetector'>
             <div class='content-block'>
@@ -62,6 +62,31 @@ add_shortcode('shopify-detector', function () {
                             </div>
                             <div class='heading-caption s-3'>Shopify apps detected:</div>
                             <div class='content apps-detected'>
+
+
+                            <div class='apps-detected-template' hidden>
+                                <div>
+                                    <div class='columns-row'>
+                                        <div class='column size-1 size-md-12'>
+                                            <div class='img-holder'>
+                                                &nbsp;
+                                            </div>
+                                        </div>
+                                        <div class='column size-11 size-md-12 detected-title'>
+                                            <a rel='noreferrer nofollow' target='_blank' class='link colored detected-title-h2 heading-caption s-4'
+                                                href=''></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='app-long-description'></div>
+                                <br>
+                                <div>
+                                    <a class='bt s-2 transparent mt-3 app-more-info' rel='noreferrer nofollow' target='_blank' href=''>More
+                                        Info</a>
+                                </div>
+                            </div>
+
+
                             </div>
                         </div>
                     </div>
