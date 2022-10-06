@@ -20,7 +20,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-add_shortcode('shopifydetector', function () {
+add_shortcode('shopify-detector', function () {
     wp_register_style('shopify-detector', plugin_dir_url(__FILE__) . 'shopify-detector.css');
     wp_enqueue_style('shopify-detector');
 
@@ -31,6 +31,7 @@ add_shortcode('shopifydetector', function () {
         'shopify_detector',
         array(
             'detection_url' => site_url('wp-json/shopify-detector/v1/detect'),
+            'shopify_logo' => plugin_dir_url( __FILE__ ) . 'img.png'
         )
     );
 
@@ -48,7 +49,7 @@ add_shortcode('shopifydetector', function () {
                     </div>
                 </div>
 
-                <div class='buttons-holder'><button class='bt s-3 detect-site' type='submit' value='Validate'>Detect</button><button hidden class='bt bt-grey s-3 share-result action-copy' type='submit' value='Validate'><span>Share result <i class='fas fa-copy'>&nbsp;</i></span></button></div>
+                <div class='buttons-holder'><button class='bt s-3 detect-site' type='submit' onclick='shopifyDetect()' value='Validate'>Detect</button><button hidden class='bt bt-grey s-3 share-result action-copy' type='submit' value='Validate'><span>Share result <i class='fas fa-copy'>&nbsp;</i></span></button></div>
 
                 <div class='detect-alert' hidden>Error</div>
 
@@ -56,226 +57,11 @@ add_shortcode('shopifydetector', function () {
                     <div class='detect-result-data'>
                         <div class='container'>
                             <div class='heading-caption s-3'>Shopify theme detected:</div>
-                            <div class='content'>
+                            <div class='content theme-detected'>
                                 <div class='sub-caption'>Nothing found</div>
                             </div>
                             <div class='heading-caption s-3'>Shopify apps detected:</div>
-                            <div class='content'>
-                                <div>
-                                    <div class='columns-row'>
-                                        <div class='column size-1 size-md-12'>
-                                            <div class='img-holder'>
-                                                <a rel='noreferrer nofollow' target='_blank' href='https://apps.shopify.com/google-reviews-trust-badge?utm_source=shopify_spy'><img src='https://cdn.shopify.com/app-store/listing_images/02390e57cc10c164770a62f5ff798ec9/icon/CLS1rKf0lu8CEAE=.png?width=70&amp;height=70'></a>
-                                            </div>
-                                        </div>
-                                        <div class='column size-11 size-md-12 detected-title'>
-                                            <a rel='noreferrer nofollow' target='_blank' class='link colored detected-title-h2 heading-caption s-4' href='https://apps.shopify.com/google-reviews-trust-badge?utm_source=shopify_spy'>Google
-                                                Reviews by Reputon</a>
-                                            <div class='adv-block'>Recommended</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    Google customer reviews app. Import reviews &amp; testimonials.
-                                </div>
-                                <br>
-                                <div>
-                                    <ul>
-                                        <li>Google reviews &amp; testimonials</li>
-                                        <li>Build trust with Google review</li>
-                                        <li>Boost sales with social proof</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>Price:</strong> $5.99/month. 7-day free trial.
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>Rating:</strong> 4.70 stars (290 reviews)
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>App created:</strong> March, 2020
-                                </div>
-                                <div>
-                                    <a class='bt s-2 transparent mt-3' rel='noreferrer nofollow' target='_blank' href='https://apps.shopify.com/google-reviews-trust-badge?utm_source=shopify_spy'>More
-                                        Info</a>
-                                </div>
-                                <div>
-                                    <div class='columns-row'>
-                                        <div class='column size-1 size-md-12'>
-                                            <div class='img-holder'>
-                                                <a rel='noreferrer nofollow' target='_blank' href='https://apps.shopify.com/product-reviews'><img src='https://cdn.shopify.com/app-store/listing_images/60fca9c7f3400ddd43004e94b1355691/icon/CIvfosz0lu8CEAE=.png?width=70&amp;height=70'></a>
-                                            </div>
-                                        </div>
-                                        <div class='column size-11 size-md-12 detected-title'>
-                                            <a rel='noreferrer nofollow' target='_blank' class='link colored detected-title-h2 heading-caption s-4' href='https://apps.shopify.com/product-reviews'>Shopify Product Reviews</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    Default free shopify reviews app.
-                                </div>
-                                <br>
-                                <div>
-                                    <ul>
-                                        <li>Increase Sales</li>
-                                        <li>Improve SEO Results</li>
-                                        <li>Flexible Design</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>Price:</strong> Price: Free
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>Rating:</strong> 3.40 stars (1637 reviews)
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>App created:</strong> March, 2010
-                                </div>
-                                <div>
-                                    <a class='bt s-2 transparent mt-3' rel='noreferrer nofollow' target='_blank' href='https://apps.shopify.com/product-reviews'>More Info</a>
-                                </div>
-                                <div>
-                                    <div class='columns-row'>
-                                        <div class='column size-1 size-md-12'>
-                                            <div class='img-holder'>
-                                                <a rel='noreferrer nofollow' target='_blank' href='https://apps.shopify.com/oxi-social-login'><img src='https://cdn.shopify.com/app-store/listing_images/98d4ebe63b6eceffd7cf5445d5c80ff5/icon/CJmG3sb0lu8CEAE=.png?width=70&amp;height=70'></a>
-                                            </div>
-                                        </div>
-                                        <div class='column size-11 size-md-12 detected-title'>
-                                            <a rel='noreferrer nofollow' target='_blank' class='link colored detected-title-h2 heading-caption s-4' href='https://apps.shopify.com/oxi-social-login'>Oxi Social Login</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    One click login with Facebook, Google and many more
-                                </div>
-                                <br>
-                                <div>
-                                    <ul>
-                                        <li>All Social Login Integration</li>
-                                        <li>Automated Setup &amp; Installation</li>
-                                        <li>Increased Signup &amp; Conversion</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>Price:</strong> From $1.99/month. 15-day free trial.
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>Rating:</strong> 4.80 stars (413 reviews)
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>App created:</strong> June, 2016
-                                </div>
-                                <div>
-                                    <a class='bt s-2 transparent mt-3' rel='noreferrer nofollow' target='_blank' href='https://apps.shopify.com/oxi-social-login'>More Info</a>
-                                </div>
-                                <div>
-                                    <div class='columns-row'>
-                                        <div class='column size-1 size-md-12'>
-                                            <div class='img-holder'>
-                                                <a rel='noreferrer nofollow' target='_blank' href='https://apps.shopify.com/back-in-stock'><img src='https://cdn.shopify.com/app-store/listing_images/08346a36a0a313120feec14003bedbc3/icon/CI35i4-zvvQCEAE=.png?width=70&amp;height=70'></a>
-                                            </div>
-                                        </div>
-                                        <div class='column size-11 size-md-12 detected-title'>
-                                            <a rel='noreferrer nofollow' target='_blank' class='link colored detected-title-h2 heading-caption s-4' href='https://apps.shopify.com/back-in-stock'>Back in Stock</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    Back in Stock Notification alerts
-                                </div>
-                                <br>
-                                <div>
-                                    <ul>
-                                        <li>Push Notification, Email &amp; SMS</li>
-                                        <li>Multilanguage Support</li>
-                                        <li>Easy to Customize and Setup</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>Price:</strong> Free plan available. 14-day free trial.
-                                    Additional charges may apply.
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>Rating:</strong> 4.80 stars (620 reviews)
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>App created:</strong> May, 2011
-                                </div>
-                                <div>
-                                    <a class='bt s-2 transparent mt-3' rel='noreferrer nofollow' target='_blank' href='https://apps.shopify.com/back-in-stock'>More Info</a>
-                                </div>
-                                <div>
-                                    <div class='columns-row'>
-                                        <div class='column size-1 size-md-12'>
-                                            <div class='img-holder'>
-                                                <a rel='noreferrer nofollow' target='_blank' href='https://apps.shopify.com/signifyd'><img src='https://cdn.shopify.com/app-store/listing_images/adb1d4e7a8537b18730ab69339a13ad4/icon/CLX1-6b0lu8CEAE=.png?width=70&amp;height=70'></a>
-                                            </div>
-                                        </div>
-                                        <div class='column size-11 size-md-12 detected-title'>
-                                            <a rel='noreferrer nofollow' target='_blank' class='link colored detected-title-h2 heading-caption s-4' href='https://apps.shopify.com/signifyd'>Signifyd</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    Guaranteed fraud and chargeback protection
-                                </div>
-                                <br>
-                                <div>
-                                    <ul>
-                                        <li>Maximize Conversion</li>
-                                        <li>Automate Customer Experience</li>
-                                        <li>Eliminate Fraud and Abuse</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>Price:</strong> $1,500/month. 14-day free trial. Additional
-                                    charges may apply.
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>Rating:</strong> 4.30 stars (157 reviews)
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>App created:</strong> June, 2013
-                                </div>
-                                <div>
-                                    <a class='bt s-2 transparent mt-3' rel='noreferrer nofollow' target='_blank' href='https://apps.shopify.com/signifyd'>More Info</a>
-                                </div>
-                                <div>
-                                    <div class='columns-row'>
-                                        <div class='column size-1 size-md-12'>
-                                            <div class='img-holder'>
-                                                <a rel='noreferrer nofollow' target='_blank' href='https://apps.shopify.com/pixlee'><img src='https://cdn.shopify.com/app-store/listing_images/497fe764a375306dd3f00c11a84a6541/icon/CP2ZwtLjj_cCEAE=.jpeg?width=70&amp;height=70'></a>
-                                            </div>
-                                        </div>
-                                        <div class='column size-11 size-md-12 detected-title'>
-                                            <a rel='noreferrer nofollow' target='_blank' class='link colored detected-title-h2 heading-caption s-4' href='https://apps.shopify.com/pixlee'>Pixlee</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    UGC + Shoppable IG
-                                </div>
-                                <br>
-                                <div>
-                                    <ul>
-                                        <li>All-In-One Platform</li>
-                                        <li>Drive Sales</li>
-                                        <li>Scale Content</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>Price:</strong> Free to install. Additional charges may apply.
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>Rating:</strong> 4.00 stars (22 reviews)
-                                </div>
-                                <div>
-                                    <strong class='heading-caption'>App created:</strong> January, 2015
-                                </div>
-                                <div>
-                                    <a class='bt s-2 transparent mt-3' rel='noreferrer nofollow' target='_blank' href='https://apps.shopify.com/pixlee'>More Info</a>
-                                </div>
+                            <div class='content apps-detected'>
                             </div>
                         </div>
                     </div>

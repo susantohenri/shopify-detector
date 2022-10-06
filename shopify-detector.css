@@ -2719,7 +2719,7 @@ h6.page-heading {
     border: none;
     background: none;
     border-radius: 0;
-    width: 750px;
+    min-width: 250px;
     max-width: 100%;
     box-sizing: border-box;
     box-shadow: none !important;
