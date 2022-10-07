@@ -37,61 +37,33 @@ add_shortcode('shopify-detector', function () {
     $shopify_logo = plugin_dir_url(__FILE__) . 'img.png';
     return "
         <div id='shopifydetector'>
-            <div class='content-block'>
-                <div class='sub-caption'><b>Enter a website of your competitor to get the insight into what Shopify apps and theme
-                        it is using.</b></div>
 
-                <div class='columns-row'>
-                    <div class='column size-12 size-sm-12'>
-                        <div class='field has-success'>
-                            <div class='input-block'><input data-validation='validUrl' data-validation-error-msg='Please enter a valid URL' data-validation-length='3-17' id='site-url' name='site-url' placeholder='Website URL' type='text' class='valid'></div>
-                        </div>
+            <div class='search-form'>
+                <div class='row'>
+                    <div class='form-group col-xl-7 col-sm-6'><input type='url' id='url' placeholder='Add a URL' class='form-control'>
                     </div>
-                </div>
-
-                <div class='buttons-holder'><button class='bt s-3 detect-site' type='submit' onclick='shopifyDetect()' value='Validate'>Detect</button><button hidden class='bt bt-grey s-3 share-result action-copy' type='submit' value='Validate'><span>Share result <i class='fas fa-copy'>&nbsp;</i></span></button></div>
-
-                <div class='detect-alert' hidden>Error</div>
-
-                <div class='detecting-result-wrapper pt-5' hidden>
-                    <div class='detect-result-data'>
-                        <div class='container'>
-                            <div class='heading-caption s-3'>Shopify theme detected:</div>
-                            <div class='content theme-detected'>
-                                <div class='sub-caption'>Nothing found</div>
-                            </div>
-                            <div class='heading-caption s-3'>Shopify apps detected:</div>
-                            <div class='content apps-detected'>
-
-
-                            <div class='apps-detected-template' hidden>
-                                <div>
-                                    <div class='columns-row'>
-                                        <div class='column size-1 size-md-12'>
-                                            <div class='img-holder'>
-                                                &nbsp;
-                                            </div>
-                                        </div>
-                                        <div class='column size-11 size-md-12 detected-title'>
-                                            <a rel='noreferrer nofollow' target='_blank' class='link colored detected-title-h2 heading-caption s-4'
-                                                href=''></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class='app-long-description'></div>
-                                <br>
-                                <div>
-                                    <a class='bt s-2 transparent mt-3 app-more-info' rel='noreferrer nofollow' target='_blank' href=''>More
-                                        Info</a>
-                                </div>
-                            </div>
-
-
-                            </div>
-                        </div>
-                    </div>
+                    <div class='col-xl-3 col-sm-4'><button class='btn btn-primary btn-block form-submit'>Detect Theme</button></div>
                 </div>
             </div>
+
+            <div class='results'>
+                <h2 class='text-center resultMSG'>
+                    aloyoga.com is built using
+                    <br>
+                    <div class='results-name-container'><a target='_blank'
+                            href='/out?url=https%3A%2F%2Fshopify.pxf.io%2Fc%2F1959501%2F1101159%2F13624%3FsubId1%3Dresults-theme%26u%3Dhttps%3A%2F%2Fwww.shopify.com%2Fcommerce-coach%2Fshopthemedetector'>
+                            Prod v29.9.0 (2022 10 04) [dace1b1]
+                        </a></div> <br> <a target='_blank'
+                        href='/out?url=https%3A%2F%2Fshopify.pxf.io%2Fc%2F1959501%2F1101159%2F13624%3FsubId1%3Dget-theme%26u%3Dhttps%3A%2F%2Fwww.shopify.com%2Fcommerce-coach%2Fshopthemedetector'
+                        class='btn btn-info btn-more-info'>
+                        Get This Theme
+                    </a>
+                    <div><small>* Click the button and enter your email</small></div>
+                    <!---->
+                    <!---->
+                </h2>
+            </div>
+
         </div>
     ";
 });
