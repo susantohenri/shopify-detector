@@ -9210,6 +9210,13 @@ input[type="submit"] {
     box-shadow: none;
     background-color: transparent;
 }
+#shopifydetector .search-form .btn.btn-warning {
+    cursor: pointer;
+    height: 60px;
+    font-size: 17px;
+    border-color: #95bf47;
+    text-transform: uppercase;
+}
 #shopifydetector .search-form .btn.btn-primary {
     cursor: pointer;
     height: 60px;

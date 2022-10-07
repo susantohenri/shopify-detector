@@ -20,7 +20,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-add_shortcode('shopify-detector', function () {
+add_shortcode('shopify-theme-detector', function () {
     wp_register_style('shopify-detector', plugin_dir_url(__FILE__) . 'shopify-detector.css');
     wp_enqueue_style('shopify-detector');
 
@@ -40,27 +40,24 @@ add_shortcode('shopify-detector', function () {
 
             <div class='search-form'>
                 <div class='row'>
-                    <div class='form-group col-xl-7 col-sm-6'><input type='url' id='url' placeholder='Add a URL' class='form-control'>
+                    <div class='form-group col-xl-7 col-sm-6'><input name='site-url' type='url' id='url' placeholder='Add a URL' class='form-control'>
                     </div>
-                    <div class='col-xl-3 col-sm-4'><button class='btn btn-primary btn-block form-submit'>Detect Theme</button></div>
+                    <div class='col-xl-3 col-sm-4'><button class='btn btn-warning btn-block form-submit' onclick='shopifyDetect()'>Detect Theme</button></div>
                 </div>
             </div>
 
-            <div class='results'>
+            <div class='results error d-none'>
                 <h2 class='text-center resultMSG'>
-                    aloyoga.com is built using
-                    <br>
-                    <div class='results-name-container'><a target='_blank'
-                            href='/out?url=https%3A%2F%2Fshopify.pxf.io%2Fc%2F1959501%2F1101159%2F13624%3FsubId1%3Dresults-theme%26u%3Dhttps%3A%2F%2Fwww.shopify.com%2Fcommerce-coach%2Fshopthemedetector'>
-                            Prod v29.9.0 (2022 10 04) [dace1b1]
-                        </a></div> <br> <a target='_blank'
-                        href='/out?url=https%3A%2F%2Fshopify.pxf.io%2Fc%2F1959501%2F1101159%2F13624%3FsubId1%3Dget-theme%26u%3Dhttps%3A%2F%2Fwww.shopify.com%2Fcommerce-coach%2Fshopthemedetector'
-                        class='btn btn-info btn-more-info'>
-                        Get This Theme
-                    </a>
-                    <div><small>* Click the button and enter your email</small></div>
-                    <!---->
-                    <!---->
+                </h2>
+            </div>
+
+            <div class='results not-shopify d-none'>
+                <h2 class='text-center resultMSG'>
+                </h2>
+            </div>
+
+            <div class='results success d-none'>
+                <h2 class='text-center resultMSG'>
                 </h2>
             </div>
 

@@ -1,4 +1,7 @@
 function shopifyDetect() {
+    document.querySelector('#shopifydetector .results.error').classList.add('d-none')
+    document.querySelector('#shopifydetector .results.not-shopify').classList.add('d-none')
+    document.querySelector('#shopifydetector .results.success').classList.add('d-none')
     var url = document.querySelector('[name="site-url"]').value.trim()
     if ('' === url) return false;
 
@@ -17,61 +20,30 @@ function shopifyDetect() {
         .then(res => res.json())
         .then(res => {
             res = JSON.parse(res)
-            if ('' !== res.error) shopifyDetectorShowError(res.error)
-            else {
-                document.querySelector('.detect-alert').setAttribute('hidden', true)
-                document.querySelector('.theme-detected').innerHTML = `<div class="sub-caption">Nothing found</div>`
-                if ('' !== res.theme && null !== res.theme) {
-                    if (res.theme.theme_store_id) {
-                        document.querySelector('.theme-detected').innerHTML = `
-                                <div class="content">
-                                    <div>
-                                        <div class="columns-row">
-                                            <div class="column size-1 size-md-12">
-                                                <div class="img-holder">
-                                                    <a rel="noreferrer nofollow" target="_blank" href="https://themes.shopify.com"><img
-                                                            src="${shopify_detector.shopify_logo}?width=70&amp;height=70" style="width:70px;height:70px;"> </a>
-                                                </div>
-                                            </div>
-                                            <div class="column size-11 size-md-12 detected-title">
-                                                <a rel="noreferrer nofollow" target="_blank" class="link colored detected-title-h2 heading-caption s-4"
-                                                href="https://themes.shopify.com">${res.theme.name}</a>
-                                            </div>
-                                        </div>
-                                    </div><br>
-                                    <div>
-                                        <a class="bt s-2 transparent mt-3" rel="noreferrer nofollow" target="_blank"
-                                            href="https://themes.shopify.com">More Info</a>
-                                    </div>
-                                </div>
-                            `
-                    }
-                }
-
-                for (var appactv of document.querySelectorAll('.apps-detected-active')) appactv.remove()
-                for (var app of res.apps) {
-                    var appHTML = document.querySelector('.apps-detected-template').cloneNode(true)
-                    appHTML.querySelector(".detected-title-h2").href = app.app_store_url
-                    appHTML.querySelector(".detected-title-h2").textContent = app.name
-                    appHTML.querySelector(".app-long-description").textContent = app.short_description
-                    appHTML.querySelector(".app-more-info").href = app.app_store_url
-                    appHTML.removeAttribute('hidden')
-                    appHTML.classList.remove('apps-detected-template')
-                    appHTML.classList.add('apps-detected-active')
-                    document.querySelector('.apps-detected').appendChild(appHTML)
-                }
-                document.querySelector('.detecting-result-wrapper').removeAttribute('hidden')
+            if ('' !== res.theme && null !== res.theme) {
+                document.querySelector('#shopifydetector .results.success .resultMSG').innerHTML = `
+                    ${res.url} is built using
+                    <br>
+                    <div class='results-name-container'>
+                        <a target='_blank' href='https://themes.shopify.com'> ${res.theme.name}</a>
+                    </div> <br>
+                    <a target='_blank' href='https://themes.shopify.com' class='btn btn-info btn-more-info'>
+                        Get This Theme
+                    </a>
+                    <div>
+                        <small>* Click the button and enter your email</small>
+                    </div>
+                `
+                document.querySelector('#shopifydetector .results.success').classList.remove('d-none')
+            } else {
+                document.querySelector('#shopifydetector .results.not-shopify .resultMSG').innerHTML = `${res.url} not using Shopify`
+                document.querySelector('#shopifydetector .results.not-shopify').classList.remove('d-none')
             }
         })
         .catch(e => {
-            shopifyDetectorShowError(e)
+            document.querySelector('#shopifydetector .results.error .resultMSG').innerHTML = e
+            document.querySelector('#shopifydetector .results.error').classList.remove('d-none')
         })
-}
-
-function shopifyDetectorShowError(e) {
-    document.querySelector('.detect-alert').innerHTML = `ERROR: ${e}`
-    document.querySelector('.detect-alert').removeAttribute('hidden')
-    document.querySelector('.detecting-result-wrapper').setAttribute('hidden', true)
 }
 
 
