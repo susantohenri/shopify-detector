@@ -4,7 +4,7 @@ function shopifyDetect() {
     document.querySelector('#shopifydetector .results.success').classList.add('d-none')
     var url = document.querySelector('[name="site-url"]').value.trim()
     if ('' === url) return false;
-    window.open(shopify_detector.popup_url)
+    shopifyDetectPopup(null)
 
     const formData = new FormData();
     formData.append('url', url);
@@ -26,9 +26,9 @@ function shopifyDetect() {
                     ${res.url} is built using
                     <br>
                     <div class='results-name-container'>
-                        <a target='_blank' href='https://themes.shopify.com'> ${res.theme.name}</a>
+                        <a target='_blank' href="#" onclick="shopifyDetectPopup('https://themes.shopify.com')"> ${res.theme.name}</a>
                     </div> <br>
-                    <a target='_blank' href='https://themes.shopify.com' class='btn btn-info btn-more-info'>
+                    <a target='_blank' href="#" onclick="shopifyDetectPopup('https://themes.shopify.com')" class='btn btn-info btn-more-info'>
                         Get This Theme
                     </a>
                     <div>
@@ -47,4 +47,7 @@ function shopifyDetect() {
         })
 }
 
-
+function shopifyDetectPopup(href) {
+    window.open(shopify_detector.popup_url)
+    // if (null !== href) window.open(href)
+}
