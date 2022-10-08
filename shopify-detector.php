@@ -30,7 +30,8 @@ add_shortcode('shopify-theme-detector', function () {
         'shopify-detector',
         'shopify_detector',
         array(
-            'detection_url' => site_url('wp-json/shopify-detector/v1/detect')
+            'detection_url' => site_url('wp-json/shopify-detector/v1/detect'),
+            'popup_url' => esc_attr(get_option('popup-url'))
         )
     );
 
@@ -75,7 +76,8 @@ add_shortcode('shopify-app-detector', function () {
         'shopify-detector',
         'shopify_detector',
         array(
-            'detection_url' => site_url('wp-json/shopify-detector/v1/detect')
+            'detection_url' => site_url('wp-json/shopify-detector/v1/detect'),
+            'popup_url' => esc_attr(get_option('popup-url'))
         )
     );
 
@@ -2733,4 +2735,28 @@ add_action('rest_api_init', function () {
             return json_encode($response);
         }
     ));
+});
+
+add_action('admin_menu', function () {
+    add_menu_page('Shopify Detector', 'Shopify Detector', 'administrator', __FILE__, function () {
+    ?>
+        <div class="wrap">
+            <h1>Shopify Detector Settings</h1>
+            <form method="post" action="options.php">
+                <?php settings_fields('shopifydetector-settings-group'); ?>
+                <?php do_settings_sections('shopifydetector-settings-group'); ?>
+                <table class="form-table">
+                    <tr valign="top">
+                        <th scope="row">Popup URL</th>
+                        <td><input type="text" name="popup-url" value="<?php echo esc_attr(get_option('popup-url')); ?>" /></td>
+                    </tr>
+                </table>
+                <?php submit_button(); ?>
+            </form>
+        </div>
+    <?php
+    }, '');
+    add_action('admin_init', function () {
+        register_setting('shopifydetector-settings-group', 'popup-url');
+    });
 });
