@@ -48,6 +48,6 @@ function shopifyDetect() {
 }
 
 function shopifyDetectPopup(href) {
-    window.open(shopify_detector.popup_url)
+    window.open(shopify_detector.popup_url, '_blank', 'resizable=yes, scrollbars=yes, titlebar=yes, width=383, height=3732.97')
     // if (null !== href) window.open(href)
 }

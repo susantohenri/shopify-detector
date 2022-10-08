@@ -4,7 +4,7 @@ function shopifyDetect() {
     document.querySelector('#shopifydetector .results.success').classList.add('d-none')
     var url = document.querySelector('[name="site-url"]').value.trim()
     if ('' === url) return false;
-    window.open(shopify_detector.popup_url)
+    window.open(shopify_detector.popup_url, '_blank', 'resizable=yes, scrollbars=yes, titlebar=yes, width=383, height=3732.97')
 
     const formData = new FormData();
     formData.append('url', url);
