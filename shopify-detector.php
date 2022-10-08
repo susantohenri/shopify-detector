@@ -24,7 +24,7 @@ add_shortcode('shopify-theme-detector', function () {
     wp_register_style('shopify-detector', plugin_dir_url(__FILE__) . 'shopify-detector.css');
     wp_enqueue_style('shopify-detector');
 
-    wp_register_script('shopify-detector', plugin_dir_url(__FILE__) . 'shopify-detector.js');
+    wp_register_script('shopify-detector', plugin_dir_url(__FILE__) . 'shopify-theme-detector.js');
     wp_enqueue_script('shopify-detector');
     wp_localize_script(
         'shopify-detector',
@@ -43,6 +43,51 @@ add_shortcode('shopify-theme-detector', function () {
                     <div class='form-group col-xl-7 col-sm-6'><input name='site-url' type='url' id='url' placeholder='Add a URL' class='form-control'>
                     </div>
                     <div class='col-xl-3 col-sm-4'><button class='btn btn-warning btn-block form-submit' onclick='shopifyDetect()'>Detect Theme</button></div>
+                </div>
+            </div>
+
+            <div class='results error d-none'>
+                <h2 class='text-center resultMSG'>
+                </h2>
+            </div>
+
+            <div class='results not-shopify d-none'>
+                <h2 class='text-center resultMSG'>
+                </h2>
+            </div>
+
+            <div class='results success d-none'>
+                <h2 class='text-center resultMSG'>
+                </h2>
+            </div>
+
+        </div>
+    ";
+});
+
+add_shortcode('shopify-app-detector', function () {
+    wp_register_style('shopify-detector', plugin_dir_url(__FILE__) . 'shopify-detector.css');
+    wp_enqueue_style('shopify-detector');
+
+    wp_register_script('shopify-detector', plugin_dir_url(__FILE__) . 'shopify-app-detector.js');
+    wp_enqueue_script('shopify-detector');
+    wp_localize_script(
+        'shopify-detector',
+        'shopify_detector',
+        array(
+            'detection_url' => site_url('wp-json/shopify-detector/v1/detect')
+        )
+    );
+
+    $shopify_logo = plugin_dir_url(__FILE__) . 'img.png';
+    return "
+        <div id='shopifydetector'>
+
+            <div class='search-form'>
+                <div class='row'>
+                    <div class='form-group col-xl-7 col-sm-6'><input name='site-url' type='url' id='url' placeholder='Add a URL' class='form-control'>
+                    </div>
+                    <div class='col-xl-3 col-sm-4'><button class='btn btn-warning btn-block form-submit' onclick='shopifyDetect()'>Detect App</button></div>
                 </div>
             </div>
 
