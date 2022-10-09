@@ -26,7 +26,7 @@ function shopifyDetect() {
             button.innerHTML = buttonText
             res = JSON.parse(res)
             if ('' !== res.theme && null !== res.theme) {
-                document.querySelector('#shopifydetector .results.success .resultMSG').innerHTML = `
+                document.querySelector('#shopifydetector > div.results.success > h2.text-center.resultMSG').innerHTML = `
                     ${res.url} is built using
                     <br>
                     <div class='results-name-container'>

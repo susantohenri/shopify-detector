@@ -37,7 +37,7 @@ function shopifyDetect() {
                         </div>
                     `
                 }
-                document.querySelector('#shopifydetector .results.success .resultMSG').innerHTML = `
+                document.querySelector('#shopifydetector > div.results.success > h2.text-center.resultMSG').innerHTML = `
                     ${res.url} is using:
                     ${appsHTML}
                 `

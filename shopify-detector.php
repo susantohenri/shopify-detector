@@ -60,6 +60,13 @@ add_shortcode('shopify-theme-detector', function () {
             <div class='results success d-none'>
                 <h2 class='text-center resultMSG'>
                 </h2>
+                <h2 class='text-center resultMSG'>
+                    Need Help Setting Up Or Customizing Your Shopify Theme?
+                    <br>
+                    <a href='#' class='btn btn-info btn-more-info'>
+                        Hire a Shopify Expert
+                    </a>
+                </h2>
             </div>
 
         </div>
@@ -105,6 +112,13 @@ add_shortcode('shopify-app-detector', function () {
 
             <div class='results success d-none'>
                 <h2 class='text-center resultMSG'>
+                </h2>
+                <h2 class='text-center resultMSG'>
+                    Need Help Setting Up Or Customizing Your Shopify Theme?
+                    <br>
+                    <a href='#' class='btn btn-info btn-more-info'>
+                        Hire a Shopify Expert
+                    </a>
                 </h2>
             </div>
 
