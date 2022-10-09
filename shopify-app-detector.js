@@ -2,13 +2,14 @@ function shopifyDetect() {
     document.querySelector('#shopifydetector .results.error').classList.add('d-none')
     document.querySelector('#shopifydetector .results.not-shopify').classList.add('d-none')
     document.querySelector('#shopifydetector .results.success').classList.add('d-none')
+    document.querySelector('#shopifydetector .results.hire-expert').classList.add('d-none')
     var url = document.querySelector('[name="site-url"]').value.trim()
     var button = document.querySelector('[onclick="shopifyDetect()"]')
     var buttonText = button.innerHTML
     var url = document.querySelector('[name="site-url"]').value.trim()
     if ('' === url) return false;
     button.innerHTML = 'Please Wait'
-    window.open(shopify_detector.popup_url, '_blank', 'resizable=yes, scrollbars=yes, titlebar=yes, width=383, height=3732.97')
+    window.open(shopify_detector.popup_url, '_blank', 'resizable=yes, scrollbars=yes, titlebar=yes, width=389, height=778')
 
     const formData = new FormData();
     formData.append('url', url);
@@ -37,7 +38,7 @@ function shopifyDetect() {
                         </div>
                     `
                 }
-                document.querySelector('#shopifydetector > div.results.success > h2.text-center.resultMSG').innerHTML = `
+                document.querySelector('#shopifydetector .results.success .resultMSG').innerHTML = `
                     ${res.url} is using:
                     ${appsHTML}
                 `
@@ -46,6 +47,8 @@ function shopifyDetect() {
                 document.querySelector('#shopifydetector .results.not-shopify .resultMSG').innerHTML = `${res.url} not using Shopify`
                 document.querySelector('#shopifydetector .results.not-shopify').classList.remove('d-none')
             }
+            document.querySelector('#shopifydetector .results.hire-expert').classList.remove('d-none')
+
         })
         .catch(e => {
             document.querySelector('#shopifydetector .results.error .resultMSG').innerHTML = e

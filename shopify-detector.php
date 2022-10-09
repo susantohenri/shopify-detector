@@ -38,37 +38,47 @@ add_shortcode('shopify-theme-detector', function () {
     $shopify_logo = plugin_dir_url(__FILE__) . 'img.png';
     return "
         <div id='shopifydetector'>
-
-            <div class='search-form'>
-                <div class='row'>
-                    <div class='form-group col-xl-7 col-sm-6'><input name='site-url' type='url' id='url' placeholder='Add a URL' class='form-control'>
+            <div class='container'>
+                <div class='row search-form'>
+                    <div class='col-sm-8'>
+                        <input name='site-url' type='url' id='url' placeholder='Add a URL' class='form-control'>
                     </div>
-                    <div class='col-xl-3 col-sm-4'><button class='btn btn-warning btn-block form-submit' onclick='shopifyDetect()'>Detect Theme</button></div>
+                    <div class='col-sm-4'>
+                        <button class='btn btn-warning btn-block form-submit' onclick='shopifyDetect()'>Detect Theme</button>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-12'>
+                        <div class='results error d-none'>
+                            <h2 class='text-center resultMSG'>
+                            </h2>
+                        </div>
+
+                        <div class='results not-shopify d-none'>
+                            <h2 class='text-center resultMSG'>
+                            </h2>
+                        </div>
+
+                        <div class='results success d-none'>
+                            <h2 class='text-center resultMSG'>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-12'>
+                        <div class='results hire-expert d-none'>
+                            <h2 class='text-center resultMSG'>
+                                Need Help Setting Up Or Customizing Your Shopify Theme?
+                                <br>
+                                <a href='#' class='btn btn-info btn-more-info'>
+                                    Hire a Shopify Expert
+                                </a>
+                            </h2>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class='results error d-none'>
-                <h2 class='text-center resultMSG'>
-                </h2>
-            </div>
-
-            <div class='results not-shopify d-none'>
-                <h2 class='text-center resultMSG'>
-                </h2>
-            </div>
-
-            <div class='results success d-none'>
-                <h2 class='text-center resultMSG'>
-                </h2>
-                <h2 class='text-center resultMSG'>
-                    Need Help Setting Up Or Customizing Your Shopify Theme?
-                    <br>
-                    <a href='#' class='btn btn-info btn-more-info'>
-                        Hire a Shopify Expert
-                    </a>
-                </h2>
-            </div>
-
         </div>
     ";
 });
@@ -91,37 +101,47 @@ add_shortcode('shopify-app-detector', function () {
     $shopify_logo = plugin_dir_url(__FILE__) . 'img.png';
     return "
         <div id='shopifydetector'>
-
-            <div class='search-form'>
-                <div class='row'>
-                    <div class='form-group col-xl-7 col-sm-6'><input name='site-url' type='url' id='url' placeholder='Add a URL' class='form-control'>
+            <div class='container'>
+                <div class='row search-form'>
+                    <div class='col-sm-8'>
+                        <input name='site-url' type='url' id='url' placeholder='Add a URL' class='form-control'>
                     </div>
-                    <div class='col-xl-3 col-sm-4'><button class='btn btn-warning btn-block form-submit' onclick='shopifyDetect()'>Detect App</button></div>
+                    <div class='col-sm-4'>
+                        <button class='btn btn-warning btn-block form-submit' onclick='shopifyDetect()'>Detect Theme</button>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-12'>
+                        <div class='results error d-none'>
+                            <h2 class='text-center resultMSG'>
+                            </h2>
+                        </div>
+
+                        <div class='results not-shopify d-none'>
+                            <h2 class='text-center resultMSG'>
+                            </h2>
+                        </div>
+
+                        <div class='results success d-none'>
+                            <h2 class='text-center resultMSG'>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-12'>
+                        <div class='results hire-expert d-none'>
+                            <h2 class='text-center resultMSG'>
+                                Need Help Setting Up Or Customizing Your Shopify Theme?
+                                <br>
+                                <a href='#' class='btn btn-info btn-more-info'>
+                                    Hire a Shopify Expert
+                                </a>
+                            </h2>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class='results error d-none'>
-                <h2 class='text-center resultMSG'>
-                </h2>
-            </div>
-
-            <div class='results not-shopify d-none'>
-                <h2 class='text-center resultMSG'>
-                </h2>
-            </div>
-
-            <div class='results success d-none'>
-                <h2 class='text-center resultMSG'>
-                </h2>
-                <h2 class='text-center resultMSG'>
-                    Need Help Setting Up Or Customizing Your Shopify Theme?
-                    <br>
-                    <a href='#' class='btn btn-info btn-more-info'>
-                        Hire a Shopify Expert
-                    </a>
-                </h2>
-            </div>
-
         </div>
     ";
 });
