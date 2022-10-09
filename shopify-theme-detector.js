@@ -2,8 +2,11 @@ function shopifyDetect() {
     document.querySelector('#shopifydetector .results.error').classList.add('d-none')
     document.querySelector('#shopifydetector .results.not-shopify').classList.add('d-none')
     document.querySelector('#shopifydetector .results.success').classList.add('d-none')
+    var button = document.querySelector('[onclick="shopifyDetect()"]')
+    var buttonText = button.innerHTML
     var url = document.querySelector('[name="site-url"]').value.trim()
     if ('' === url) return false;
+    button.innerHTML = 'Please Wait'
     shopifyDetectPopup(null)
 
     const formData = new FormData();
@@ -20,6 +23,7 @@ function shopifyDetect() {
     })
         .then(res => res.json())
         .then(res => {
+            button.innerHTML = buttonText
             res = JSON.parse(res)
             if ('' !== res.theme && null !== res.theme) {
                 document.querySelector('#shopifydetector .results.success .resultMSG').innerHTML = `

@@ -3,7 +3,11 @@ function shopifyDetect() {
     document.querySelector('#shopifydetector .results.not-shopify').classList.add('d-none')
     document.querySelector('#shopifydetector .results.success').classList.add('d-none')
     var url = document.querySelector('[name="site-url"]').value.trim()
+    var button = document.querySelector('[onclick="shopifyDetect()"]')
+    var buttonText = button.innerHTML
+    var url = document.querySelector('[name="site-url"]').value.trim()
     if ('' === url) return false;
+    button.innerHTML = 'Please Wait'
     window.open(shopify_detector.popup_url, '_blank', 'resizable=yes, scrollbars=yes, titlebar=yes, width=383, height=3732.97')
 
     const formData = new FormData();
@@ -20,6 +24,7 @@ function shopifyDetect() {
     })
         .then(res => res.json())
         .then(res => {
+            button.innerHTML = buttonText
             res = JSON.parse(res)
             if (res.apps.length > 0) {
                 appsHTML = ''
